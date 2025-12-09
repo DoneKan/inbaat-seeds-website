@@ -1,48 +1,98 @@
 import React, { useState } from 'react';
-import { Leaf, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logo from "../assets/logo.png";
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+
   return (
-    <header className="bg-gradient-to-r from-emerald-900 via-green-800 to-emerald-900 text-white shadow-2xl sticky top-0 z-50 border-b-2 border-green-600">
+    <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <div className="flex items-center space-x-4">
-            <div className="bg-white p-2 rounded-lg shadow-lg">
-              <Leaf className="w-10 h-10 text-green-700" />
-            </div>
-            <div>
-              <h1 className="text-2xl lg:text-3xl font-bold tracking-tight">Inbaat Seeds</h1>
-              <p className="text-xs lg:text-sm text-green-200">Premium Hybrid Seeds</p>
+          <div className="flex items-center space-x-3">
+            <img
+              src={logo}
+              alt="Inbaat Seeds Logo"
+              className="h-14 lg:h-16 w-auto object-contain"
+            />
+            <div className="hidden sm:block">
+              <h1 className="text-xl lg:text-2xl font-bold tracking-tight text-gray-900">
+                Inbaat Seeds
+              </h1>
+              <p className="text-xs text-gray-500">Premium Hybrid Seeds</p>
             </div>
           </div>
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 items-center">
-            <a href="#home" className="text-lg font-medium hover:text-green-300 transition-colors duration-200">Home</a>
-            <a href="#about" className="text-lg font-medium hover:text-green-300 transition-colors duration-200">About</a>
-            <a href="#products" className="text-lg font-medium hover:text-green-300 transition-colors duration-200">Products</a>
-            <a href="#contact" className="bg-green-600 hover:bg-green-500 px-6 py-2 rounded-lg font-semibold transition-all duration-200 shadow-lg">Contact</a>
+            <a 
+              href="#home" 
+              className="text-lg font-medium text-gray-700 hover:text-lime-600 transition-colors duration-200"
+            >
+              Home
+            </a>
+            <a 
+              href="#about" 
+              className="text-lg font-medium text-gray-700 hover:text-lime-600 transition-colors duration-200"
+            >
+              About
+            </a>
+            <a 
+              href="#products" 
+              className="text-lg font-medium text-gray-700 hover:text-lime-600 transition-colors duration-200"
+            >
+              Products
+            </a>
+            <a 
+              href="#contact" 
+              className="bg-lime-600 hover:bg-lime-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 transform"
+            >
+              Contact
+            </a>
           </nav>
-          
+
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-green-700 transition"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
+            aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-        
+
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden pb-4 space-y-2">
-            <a href="#home" className="block py-2 px-4 hover:bg-green-700 rounded transition">Home</a>
-            <a href="#about" className="block py-2 px-4 hover:bg-green-700 rounded transition">About</a>
-            <a href="#products" className="block py-2 px-4 hover:bg-green-700 rounded transition">Products</a>
-            <a href="#contact" className="block py-2 px-4 hover:bg-green-700 rounded transition">Contact</a>
+          <div className="md:hidden pb-4 space-y-1 border-t border-gray-100 pt-4">
+            <a 
+              href="#home" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-3 px-4 text-gray-700 hover:bg-lime-50 hover:text-lime-700 rounded-lg transition-colors font-medium"
+            >
+              Home
+            </a>
+            <a 
+              href="#about" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-3 px-4 text-gray-700 hover:bg-lime-50 hover:text-lime-700 rounded-lg transition-colors font-medium"
+            >
+              About
+            </a>
+            <a 
+              href="#products" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-3 px-4 text-gray-700 hover:bg-lime-50 hover:text-lime-700 rounded-lg transition-colors font-medium"
+            >
+              Products
+            </a>
+            <a 
+              href="#contact" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-3 px-4 bg-lime-600 text-white hover:bg-lime-700 rounded-lg transition-colors font-semibold text-center"
+            >
+              Contact
+            </a>
           </div>
         )}
       </div>
